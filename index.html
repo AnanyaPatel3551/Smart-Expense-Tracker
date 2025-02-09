@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Add Font Awesome for Trash Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Add ApexCharts CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Smart Expense Tracker</h1>
+    <p>Track expenses, manage budgets, and get AI-powered financial advice</p>
+  </header>
+  <main class="main-container">
+    <!-- Budget Section -->
+    <section class="budget-container">
+      <div class="input-group">
+        <label for="salary-input">Monthly Salary (₹)</label>
+        <input type="number" id="salary-input" placeholder="Enter monthly salary" aria-label="Monthly Salary">
+      </div>
+      <div class="input-group">
+        <label for="threshold-input">Spending Limit (₹)</label>
+        <input type="number" id="threshold-input" placeholder="Set spending limit" aria-label="Spending Limit">
+      </div>
+      <button id="set-budget-btn" class="btn-add" aria-label="Set Budget">Set Budget</button>
+    </section>
+    <!-- Expense Input Section -->
+    <section class="input-container">
+      <div class="input-group">
+        <label for="category-select">Category</label>
+        <select id="category-select" aria-label="Expense Category">
+          <option value="Food & Beverages">Food & Beverages</option>
+          <option value="Rent">Rent</option>
+          <option value="Transport">Transport</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Relaxing">Relaxing</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="amount-input">Amount (INR)</label>
+        <div class="currency-input">
+          <span class="currency-symbol">₹</span>
+          <input type="number" id="amount-input" placeholder="Enter amount" aria-label="Expense Amount" />
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="date-input">Date</label>
+        <input type="date" id="date-input" aria-label="Expense Date" />
+      </div>
+      <button id="add-btn" class="btn-add" aria-label="Add Expense">Add Expense</button>
+    </section>
+    <!-- Currency Converter -->
+    <section class="currency-container">
+      <label for="currency-select">Select Currency</label>
+      <select id="currency-select" aria-label="Currency Selector"></select>
+    </section>
+    <!-- Spending Chart -->
+    <section class="chart-container">
+      <div id="spendingChart"></div> <!-- Updated for ApexCharts -->
+    </section>
+    <!-- Expense Table -->
+    <section class="expense-table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Amount (INR)</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="expenses-table-body"></tbody>
+        <tfoot>
+          <tr>
+            <td>Total (INR):</td>
+            <td id="total-amount">₹0.00</td>
+            <td colspan="2"></td>
+          </tr>
+          <tr>
+            <td>Converted Total:</td>
+            <td id="converted-amount">0.00</td>
+            <td colspan="2"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+    <!-- AI Suggestions -->
+    <section class="ai-suggestions">
+      <h3>🤖 AI Financial Advisor</h3>
+      <div id="ai-advice">
+        <p>Start by setting your monthly budget and adding expenses to receive personalized advice.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pop-up Notification -->
+  <div id="popup-notification" class="popup" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

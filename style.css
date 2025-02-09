@@ -1,0 +1,401 @@
+/* Wiggle Animation */
+@keyframes wiggle {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  /* Trash Can Animation */
+  @keyframes trashShake {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(-10deg) scale(1.1);
+    }
+    50% {
+      transform: rotate(10deg) scale(1.1);
+    }
+    75% {
+      transform: rotate(-10deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(0deg) scale(0); /* Shrink to disappear */
+    }
+  }
+  
+  /* Apply Wiggle Effect to Buttons */
+  #set-budget-btn:hover,
+  #add-btn:hover {
+    animation: wiggle 0.3s ease-in-out; /* Wiggle on hover */
+  }
+  
+  #set-budget-btn:active,
+  #add-btn:active {
+    animation: wiggle 0.3s ease-in-out; /* Wiggle on click */
+  }
+  
+  /* Delete Button Styles */
+  .delete-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete-btn:hover {
+    background-color: #e6395d; /* Slightly darker pink */
+    transform: scale(1.05) translateY(-3px); /* Zoom and lift effect */
+    box-shadow: 0 6px 12px rgba(255, 77, 109, 0.8); /* Enhanced shadow on hover */
+  }
+  
+  .delete-btn i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Apply trash can animation */
+  .trash-animation {
+    animation: trashShake 0.5s ease-in-out forwards;
+  }
+  
+  /* Pop-up Notification */
+  .popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--success-color);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1000;
+    animation: fadeInOut 3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+  
+  /* Rest of the CSS remains unchanged */
+  :root {
+    --primary-color: #17c3e6; /* Bright Cyan */
+    --secondary-color: #2b3a55; /* Dark Blue */
+    --accent-color: #ff4d6d; /* Vibrant Pink */
+    --bg-color: #121212; /* Dark Background */
+    --text-color: #e0e0e0; /* Light Gray Text */
+    --header-bg: #1e1e1e; /* Slightly Lighter Header Background */
+    --header-text: #ffffff; /* White Header Text */
+    --success-color: #4caf50; /* Green for Success */
+    --warning-color: #ff9800; /* Orange for Warning */
+    --error-color: #f44336; /* Red for Error */
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 18px; /* Increased base font size */
+  }
+  
+  /* Accessibility Focus Styles */
+  input:focus,
+  select:focus,
+  button:focus {
+    outline: 3px solid var(--primary-color); /* Thicker outline for better visibility */
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(23, 195, 230, 0.8); /* Strong glowing effect */
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    text-align: center;
+    padding: 30px 20px; /* Increased padding */
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem; /* Larger header title */
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 1.2rem; /* Larger subtitle */
+    font-weight: 500;
+  }
+  
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px; /* Increased padding */
+  }
+  
+  .budget-container,
+  .input-container,
+  .chart-container,
+  .expense-table-container,
+  .ai-suggestions {
+    background: #1e1e1e; /* Dark container background */
+    padding: 30px; /* Increased padding */
+    border-radius: 12px; /* Larger rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .budget-container:hover,
+  .input-container:hover,
+  .chart-container:hover,
+  .expense-table-container:hover,
+  .ai-suggestions:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+  }
+  
+  .input-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    font-size: 1.1rem; /* Larger label text */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  .input-group input,
+  .input-group select {
+    padding: 15px; /* Increased padding */
+    font-size: 1rem; /* Larger input text */
+    border: 2px solid #333; /* Darker border */
+    border-radius: 8px; /* Larger rounded corners */
+    background-color: #2b2b2b; /* Dark input background */
+    color: var(--text-color); /* Light text for contrast */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .input-group input:hover,
+  .input-group select:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px rgba(23, 195, 230, 0.6); /* Glow effect on hover */
+  }
+  
+  /* Styling for the Date Input */
+  .input-group input[type="date"] {
+    position: relative;
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+  }
+  
+  /* Add a custom calendar icon */
+  .input-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Make the icon white */
+    cursor: pointer;
+    background-color: transparent; /* No background color */
+    border-radius: 4px; /* Rounded corners for the icon */
+    padding: 4px; /* Add padding around the icon */
+    transition: opacity 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Hover effect for the calendar icon */
+  .input-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 0.8; /* Slightly dim the icon on hover */
+  }
+  
+  /* Focus styles for the date input */
+  .input-group input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px rgba(23, 195, 230, 0.6); /* Glow effect on focus */
+  }
+  
+  .currency-input {
+    position: relative;
+  }
+  
+  .currency-symbol {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    z-index: 1;
+    font-size: 1.2rem; /* Larger currency symbol */
+  }
+  
+  #amount-input {
+    padding-left: 40px !important; /* Adjusted for larger currency symbol */
+  }
+  
+  .btn-add {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 15px 25px; /* Increased padding */
+    font-size: 1.1rem; /* Larger button text */
+    border-radius: 8px; /* Larger rounded corners */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    align-self: flex-end;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  }
+  
+  .btn-add:hover {
+    background-color: #14a3be; /* Slightly darker cyan */
+    transform: scale(1.05) translateY(-3px); /* Zoom and lift effect */
+    box-shadow: 0 6px 12px rgba(23, 195, 230, 0.8); /* Enhanced shadow on hover */
+  }
+  
+  .chart-container {
+    width: 100%;
+    height: 400px; /* Ensure enough height for the chart */
+    margin-top: 20px;
+  }
+  
+  #spendingChart {
+    width: 100%;
+    height: 100%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th,
+  td {
+    padding: 15px; /* Increased padding */
+    text-align: left;
+    border-bottom: 2px solid #333; /* Darker border */
+    font-size: 1rem; /* Larger table text */
+    color: var(--text-color);
+  }
+  
+  tfoot td {
+    font-size: 1.2rem; /* Larger footer text */
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .ai-suggestions {
+    background: #1e1e1e; /* Dark container background */
+    padding: 30px; /* Increased padding */
+    border-radius: 12px; /* Larger rounded corners */
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+  }
+  
+  #ai-advice {
+    padding: 20px; /* Increased padding */
+    background: #2b2b2b; /* Dark advice background */
+    border-radius: 8px; /* Larger rounded corners */
+    margin-top: 15px;
+    font-size: 1.1rem; /* Larger advice text */
+    color: var(--text-color);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .new-expense-row {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Status Colors */
+  .success {
+    color: var(--success-color);
+  }
+  
+  .warning {
+    color: var(--warning-color);
+  }
+  
+  .error {
+    color: var(--error-color);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .input-container,
+    .budget-container {
+      flex-direction: column;
+    }
+  
+    .input-group {
+      width: 100%;
+    }
+  
+    .header h1 {
+      font-size: 2rem; /* Slightly smaller header for mobile */
+    }
+  
+    .header p {
+      font-size: 1rem; /* Slightly smaller subtitle for mobile */
+    }
+  
+    .btn-add,
+    .delete-btn {
+      font-size: 1rem; /* Smaller buttons for mobile */
+      padding: 12px 20px; /* Adjusted padding for mobile */
+    }
+  }
